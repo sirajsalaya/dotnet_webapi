@@ -1,8 +1,15 @@
+using Core;
 using ProjexHR.Shared;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+// Serilog Logger
+// builder.Logging.ClearProviders();
+builder.Logging.AddSerilog();
+Core.Logger.InitialiseLogger();
 
 builder.Services.AddControllers();
 
@@ -39,6 +46,13 @@ if (app.Environment.IsDevelopment())
         options.RoutePrefix = "";
     });
 }
+else
+{
+    app.UseExceptionHandler("/error");
+    app.UseHsts();
+}
+
+app.UseWhen(predicate => predicate.Request.Path.StartsWithSegments("/api"), configuration => configuration.UseMiddleware(typeof(SerilogMiddleware)));
 
 app.UseHttpsRedirection();
 

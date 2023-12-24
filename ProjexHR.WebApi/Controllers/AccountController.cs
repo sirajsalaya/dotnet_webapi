@@ -1,19 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
-using ProjexHR.Shared;
+using Serilog;
 
 namespace ProjexHR.WebApi;
 
 [Route("api/[controller]")]
 public class AccountController : BaseController
 {
-    public AccountController(ILogger<BaseController> logger) : base(logger)
+    public AccountController() : base()
     {
     }
 
     [HttpGet("Login")]
     public IActionResult Login()
     {
-        _logger.LogInformation("Login started");
+        Log.Logger.Information("Login started");
         BaseReturn<bool> baseObj = new();
 
         try
@@ -28,11 +28,11 @@ public class AccountController : BaseController
         }
         catch (Exception ex)
         {
-            _logger.LogError("Login error : {@ex}", ex);
+            Log.Logger.Error("Login error : {@ex}", ex);
         }
         finally
         {
-            _logger.LogInformation("Login ended with success : {@ex}", baseObj.Success);
+            Log.Logger.Information("Login ended with success : {@ex}", baseObj.Success);
         }
         return Ok(baseObj);
     }
