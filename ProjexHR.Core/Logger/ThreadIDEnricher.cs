@@ -1,7 +1,7 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace Core;
+namespace ProjexHR.Core;
 
 public class ThreadIDEnricher : ILogEventEnricher
 {

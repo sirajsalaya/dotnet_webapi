@@ -1,4 +1,3 @@
-using Core;
 using ProjexHR.Shared;
 using Serilog;
 
@@ -9,9 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Serilog Logger
 // builder.Logging.ClearProviders();
 builder.Logging.AddSerilog();
-Core.Logger.InitialiseLogger();
-
-builder.Services.AddControllers();
+ProjexHR.Core.Logger.InitialiseLogger();
 
 // Add configuration
 builder.Services.AddOptions();
@@ -27,6 +24,8 @@ var config = builder.Configuration.GetSection("Config").Get<Config>();
 ConnectionConfig.Database = config.CloudSQL.Database;
 ConnectionConfig.ConnectionString = config.CloudSQL.ConnectionString;
 ConnectionConfig.ApplicationBasePath = config.ApplicationBasePath;
+
+builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -52,7 +51,7 @@ else
     app.UseHsts();
 }
 
-app.UseWhen(predicate => predicate.Request.Path.StartsWithSegments("/api"), configuration => configuration.UseMiddleware(typeof(SerilogMiddleware)));
+app.UseWhen(predicate => predicate.Request.Path.StartsWithSegments("/api"), configuration => configuration.UseMiddleware(typeof(ProjexHR.Core.SerilogMiddleware)));
 
 app.UseHttpsRedirection();
 

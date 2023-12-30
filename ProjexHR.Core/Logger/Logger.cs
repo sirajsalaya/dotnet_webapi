@@ -3,7 +3,7 @@ using Serilog.Events;
 using Serilog.Exceptions;
 using System.Runtime.CompilerServices;
 
-namespace Core;
+namespace ProjexHR.Core;
 
 public static class Logger
 {

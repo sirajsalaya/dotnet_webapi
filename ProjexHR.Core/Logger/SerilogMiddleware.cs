@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http;
 using Serilog;
 using System.Diagnostics;
 
-namespace Core;
+namespace ProjexHR.Core;
 
 public class SerilogMiddleware
 {

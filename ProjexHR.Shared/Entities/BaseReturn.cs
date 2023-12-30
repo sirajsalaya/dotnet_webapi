@@ -1,3 +1,5 @@
+namespace ProjexHR.Shared;
+
 /// <summary>
 /// Represents a generic response object with success status, code, message, data, count, and error information.
 /// </summary>
@@ -33,4 +35,5 @@ public class BaseReturn<T>
     /// Gets or sets an error message in case of failure.
     /// </summary>
     public string Error { get; set; }
+
 }
