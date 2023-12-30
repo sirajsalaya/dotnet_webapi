@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjexHR.Core", "ProjexHR.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjexHR.Business", "ProjexHR.Business\ProjexHR.Business.csproj", "{29C3EBF5-C975-47BC-B421-DDA2B2A0D3B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjexHR.Contract", "ProjexHR.Contract\ProjexHR.Contract.csproj", "{0AF8F353-D442-4057-BE35-370962187CA7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{29C3EBF5-C975-47BC-B421-DDA2B2A0D3B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29C3EBF5-C975-47BC-B421-DDA2B2A0D3B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29C3EBF5-C975-47BC-B421-DDA2B2A0D3B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AF8F353-D442-4057-BE35-370962187CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AF8F353-D442-4057-BE35-370962187CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AF8F353-D442-4057-BE35-370962187CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AF8F353-D442-4057-BE35-370962187CA7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

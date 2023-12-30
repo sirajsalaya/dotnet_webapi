@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using ProjexHR.Contract;
 using ProjexHR.Core;
 using ProjexHR.Shared;
 using Serilog;
@@ -11,20 +12,21 @@ public class Account
     {
     }
 
-    public BaseReturn<bool> Login()
+    public BaseReturn<ELogin> Login()
     {
         Log.Logger.Here().Information("Login started");
-        BaseReturn<bool> baseObj = new();
+        BaseReturn<ELogin> baseObj = new();
 
         try
         {
-            baseObj = new BaseReturn<bool>
+            baseObj.Data = new ELogin
             {
-                Success = true,
-                StatusCode = StatusCodes.Status200OK,
-                Message = "Login Successfull",
-                Data = true,
+                UserId = 10,
+                Username = "JohnDoe"
             };
+            baseObj.Success = true;
+            baseObj.StatusCode = StatusCodes.Status200OK;
+            baseObj.Message = "Login Successfull";
         }
         catch (Exception ex)
         {

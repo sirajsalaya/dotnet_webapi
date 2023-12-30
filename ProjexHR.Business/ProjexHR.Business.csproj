@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjexHR.Core\ProjexHR.Core.csproj" />
     <ProjectReference Include="..\ProjexHR.Shared\ProjexHR.Shared.csproj" />
+    <ProjectReference Include="..\ProjexHR.Contract\ProjexHR.Contract.csproj" />
   </ItemGroup>
 
 </Project>
