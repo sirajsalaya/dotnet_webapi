@@ -1,5 +1,7 @@
 using Serilog;
 using ProjexHR.Shared;
+using ProjexHR.Data.DbEntities;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,6 +27,8 @@ var config = builder.Configuration.GetSection("Config").Get<Config>();
 ConnectionConfig.Database = config.CloudSQL.Database;
 ConnectionConfig.ConnectionString = config.CloudSQL.ConnectionString;
 ConnectionConfig.ApplicationBasePath = config.ApplicationBasePath;
+
+builder.Services.AddDbContext<ProjexHRContext>(options => options.UseMySql(ConnectionConfig.ConnectionString, ServerVersion.AutoDetect(ConnectionConfig.ConnectionString)));
 
 builder.Services.AddControllers();
 

@@ -7,10 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.25" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ProjexHR.Core\ProjexHR.Core.csproj" />
     <ProjectReference Include="..\ProjexHR.Shared\ProjexHR.Shared.csproj" />
-    <ProjectReference Include="..\ProjexHR.Contract\ProjexHR.Contract.csproj" />
-    <ProjectReference Include="..\ProjexHR.Data\ProjexHR.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
   </ItemGroup>
 
 </Project>

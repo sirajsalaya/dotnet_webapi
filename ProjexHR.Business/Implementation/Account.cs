@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using ProjexHR.Contract;
 using ProjexHR.Core;
+using ProjexHR.Data;
+using ProjexHR.Data.DbEntities;
 using ProjexHR.Shared;
 using Serilog;
 
@@ -11,22 +13,31 @@ public class Account
     public Account()
     {
     }
-
-    public BaseReturn<ELogin> Login()
+    public BaseReturn<List<ELocationMaster>> Login()
     {
         Log.Logger.Here().Information("Login started");
-        BaseReturn<ELogin> baseObj = new();
+        ProjexHRService<LocationMaster> _locationCtx = new ProjexHRService<LocationMaster>();
+        BaseReturn<List<ELocationMaster>> baseObj = new();
 
         try
         {
-            baseObj.Data = new ELogin
-            {
-                UserId = 10,
-                Username = "JohnDoe"
-            };
+            baseObj.Data = _locationCtx.GetIQueryable()
+           .Select(x => new ELocationMaster
+           {
+               LocationId = x.LocationId,
+               LocationCd = x.LocationCd,
+               LocationName = x.LocationName,
+               IsDelete = x.IsDelete,
+               IsActive = x.IsActive,
+               CreatedBy = x.CreatedBy,
+               CreatedOn = x.CreatedOn,
+               ModifiedBy = x.ModifiedBy,
+               ModifiedOn = x.ModifiedOn,
+           }).ToList();
+
+            baseObj.ItemCount = baseObj.Data.Count;
             baseObj.Success = true;
             baseObj.StatusCode = StatusCodes.Status200OK;
-            baseObj.Message = "Login Successfull";
         }
         catch (Exception ex)
         {

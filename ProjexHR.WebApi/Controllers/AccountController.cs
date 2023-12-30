@@ -17,7 +17,7 @@ public class AccountController : BaseController
     [HttpGet("Login")]
     public IActionResult Login()
     {
-        BaseReturn<ELogin> baseObj = _account.Login();
+        BaseReturn<List<ELocationMaster>> baseObj = _account.Login();
         return StatusCode(baseObj.StatusCode > 0 ? baseObj.StatusCode : 200, baseObj);
     }
 

@@ -15,6 +15,7 @@
     <ProjectReference Include="..\ProjexHR.Core\ProjexHR.Core.csproj" />
     <ProjectReference Include="..\ProjexHR.Shared\ProjexHR.Shared.csproj" />
     <ProjectReference Include="..\ProjexHR.Contract\ProjexHR.Contract.csproj" />
+    <ProjectReference Include="..\ProjexHR.Data\ProjexHR.Data.csproj" />
   </ItemGroup>
 
 </Project>
