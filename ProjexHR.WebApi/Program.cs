@@ -1,5 +1,5 @@
-using ProjexHR.Shared;
 using Serilog;
+using ProjexHR.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +21,7 @@ builder.Configuration
 builder.Services.Configure<Config>(builder.Configuration.GetSection("Config"));
 var config = builder.Configuration.GetSection("Config").Get<Config>();
 
+// Database Connection string
 ConnectionConfig.Database = config.CloudSQL.Database;
 ConnectionConfig.ConnectionString = config.CloudSQL.ConnectionString;
 ConnectionConfig.ApplicationBasePath = config.ApplicationBasePath;

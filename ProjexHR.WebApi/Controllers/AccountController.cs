@@ -1,40 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
-using Serilog;
+using ProjexHR.Business;
+using ProjexHR.Shared;
 
 namespace ProjexHR.WebApi;
 
 [Route("api/[controller]")]
 public class AccountController : BaseController
 {
+    private readonly Account _account;
     public AccountController() : base()
     {
+        _account = new();
     }
 
     [HttpGet("Login")]
     public IActionResult Login()
     {
-        Log.Logger.Information("Login started");
-        BaseReturn<bool> baseObj = new();
-
-        try
-        {
-            baseObj = new BaseReturn<bool>
-            {
-                Success = true,
-                StatusCode = StatusCodes.Status200OK,
-                Message = "Login Successfull",
-                Data = true,
-            };
-        }
-        catch (Exception ex)
-        {
-            Log.Logger.Error("Login error : {@ex}", ex);
-        }
-        finally
-        {
-            Log.Logger.Information("Login ended with success : {@ex}", baseObj.Success);
-        }
-        return Ok(baseObj);
+        BaseReturn<bool> baseObj = _account.Login();
+        return StatusCode(baseObj.StatusCode > 0 ? baseObj.StatusCode : 200, baseObj);
     }
 
 }
