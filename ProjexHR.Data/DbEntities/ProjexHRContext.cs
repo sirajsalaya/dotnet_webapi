@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace ProjexHR.Data.DbEntities
+namespace ProjexHR.Data
 {
     public partial class ProjexHRContext : DbContext
     {
@@ -16,18 +16,18 @@ namespace ProjexHR.Data.DbEntities
         {
         }
 
-        public virtual DbSet<DesignationMaster> DesignationMasters { get; set; }
-        public virtual DbSet<LocationMaster> LocationMasters { get; set; }
-        public virtual DbSet<ShiftMaster> ShiftMasters { get; set; }
-        public virtual DbSet<UserMaster> UserMasters { get; set; }
-        public virtual DbSet<WageMaster> WageMasters { get; set; }
+        public virtual DbSet<DesignationMaster> DesignationMasters { get; set; } = null!;
+        public virtual DbSet<LocationMaster> LocationMasters { get; set; } = null!;
+        public virtual DbSet<ShiftMaster> ShiftMasters { get; set; } = null!;
+        public virtual DbSet<UserMaster> UserMasters { get; set; } = null!;
+        public virtual DbSet<WageMaster> WageMasters { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseMySql("user=root;password=1234;server=localhost;port=3306;database=projex_hr;treattinyasboolean=true", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.1.0-mysql"));
+                optionsBuilder.UseMySql("user=root;password=1234;server=localhost;port=3306;database=projex_hr;treattinyasboolean=false", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.1.0-mysql"));
             }
         }
 
@@ -53,22 +53,20 @@ namespace ProjexHR.Data.DbEntities
                     .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                 entity.Property(e => e.DesignationCd)
-                    .IsRequired()
                     .HasMaxLength(5)
                     .HasColumnName("designation_cd");
 
                 entity.Property(e => e.DesignationName)
-                    .IsRequired()
                     .HasMaxLength(45)
                     .HasColumnName("designation_name");
 
                 entity.Property(e => e.IsActive)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_active")
                     .HasDefaultValueSql("b'1'");
 
                 entity.Property(e => e.IsDelete)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_delete")
                     .HasDefaultValueSql("b'0'");
 
@@ -96,22 +94,20 @@ namespace ProjexHR.Data.DbEntities
                     .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                 entity.Property(e => e.IsActive)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_active")
                     .HasDefaultValueSql("b'1'");
 
                 entity.Property(e => e.IsDelete)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_delete")
                     .HasDefaultValueSql("b'0'");
 
                 entity.Property(e => e.LocationCd)
-                    .IsRequired()
                     .HasMaxLength(5)
                     .HasColumnName("location_cd");
 
                 entity.Property(e => e.LocationName)
-                    .IsRequired()
                     .HasMaxLength(45)
                     .HasColumnName("location_name");
 
@@ -139,12 +135,12 @@ namespace ProjexHR.Data.DbEntities
                     .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                 entity.Property(e => e.IsActive)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_active")
                     .HasDefaultValueSql("b'1'");
 
                 entity.Property(e => e.IsDelete)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_delete")
                     .HasDefaultValueSql("b'0'");
 
@@ -155,12 +151,10 @@ namespace ProjexHR.Data.DbEntities
                     .HasColumnName("modified_on");
 
                 entity.Property(e => e.ShiftCd)
-                    .IsRequired()
                     .HasMaxLength(5)
                     .HasColumnName("shift_cd");
 
                 entity.Property(e => e.ShiftName)
-                    .IsRequired()
                     .HasMaxLength(45)
                     .HasColumnName("shift_name");
             });
@@ -204,12 +198,12 @@ namespace ProjexHR.Data.DbEntities
                 entity.Property(e => e.FailedAttempts).HasColumnName("failed_attempts");
 
                 entity.Property(e => e.IsActive)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_active")
                     .HasDefaultValueSql("b'1'");
 
                 entity.Property(e => e.IsDelete)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_delete")
                     .HasDefaultValueSql("b'0'");
 
@@ -228,7 +222,6 @@ namespace ProjexHR.Data.DbEntities
                     .HasColumnName("modified_on");
 
                 entity.Property(e => e.Password)
-                    .IsRequired()
                     .HasMaxLength(100)
                     .HasColumnName("password");
 
@@ -237,12 +230,11 @@ namespace ProjexHR.Data.DbEntities
                     .HasColumnName("password_change_dttm");
 
                 entity.Property(e => e.Suspended)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("suspended")
                     .HasDefaultValueSql("b'0'");
 
                 entity.Property(e => e.UserName)
-                    .IsRequired()
                     .HasMaxLength(45)
                     .HasColumnName("user_name");
 
@@ -252,7 +244,7 @@ namespace ProjexHR.Data.DbEntities
                     .HasDefaultValueSql("'E'");
 
                 entity.Property(e => e.UserStatus)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("user_status")
                     .HasDefaultValueSql("b'1'");
             });
@@ -274,12 +266,12 @@ namespace ProjexHR.Data.DbEntities
                     .HasDefaultValueSql("CURRENT_TIMESTAMP");
 
                 entity.Property(e => e.IsActive)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_active")
                     .HasDefaultValueSql("b'1'");
 
                 entity.Property(e => e.IsDelete)
-                    .HasColumnType("bit(1)")
+                    .IsRequired()
                     .HasColumnName("is_delete")
                     .HasDefaultValueSql("b'0'");
 
@@ -290,12 +282,10 @@ namespace ProjexHR.Data.DbEntities
                     .HasColumnName("modified_on");
 
                 entity.Property(e => e.WageCd)
-                    .IsRequired()
                     .HasMaxLength(5)
                     .HasColumnName("wage_cd");
 
                 entity.Property(e => e.WageName)
-                    .IsRequired()
                     .HasMaxLength(45)
                     .HasColumnName("wage_name");
             });

@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProjexHR.Data.DbEntities
+namespace ProjexHR.Data
 {
     public partial class WageMaster
     {
         public int WageId { get; set; }
-        public string WageCd { get; set; }
-        public string WageName { get; set; }
-        public ulong IsDelete { get; set; }
-        public ulong IsActive { get; set; }
+        public string WageCd { get; set; } = null!;
+        public string WageName { get; set; } = null!;
+        public bool? IsDelete { get; set; }
+        public bool? IsActive { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
         public int? ModifiedBy { get; set; }

@@ -10,8 +10,8 @@ namespace ProjexHR.Contract
         public int LocationId { get; set; }
         public string LocationCd { get; set; }
         public string LocationName { get; set; }
-        public ulong IsDelete { get; set; }
-        public ulong IsActive { get; set; }
+        public bool? IsDelete { get; set; }
+        public bool? IsActive { get; set; }
         public int CreatedBy { get; set; }
         public DateTime CreatedOn { get; set; }
         public int? ModifiedBy { get; set; }

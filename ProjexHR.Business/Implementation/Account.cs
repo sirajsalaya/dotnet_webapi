@@ -2,17 +2,18 @@ using Microsoft.AspNetCore.Http;
 using ProjexHR.Contract;
 using ProjexHR.Core;
 using ProjexHR.Data;
-using ProjexHR.Data.DbEntities;
 using ProjexHR.Shared;
 using Serilog;
 
 namespace ProjexHR.Business;
 
-public class Account
+public class Account : Base
 {
-    public Account()
+    public Account(Config config) : base(config)
     {
+        Log.Logger.Here().Information("Account controller started");
     }
+
     public BaseReturn<List<ELocationMaster>> Login()
     {
         Log.Logger.Here().Information("Login started");
@@ -21,19 +22,20 @@ public class Account
 
         try
         {
-            baseObj.Data = _locationCtx.GetIQueryable()
-           .Select(x => new ELocationMaster
-           {
-               LocationId = x.LocationId,
-               LocationCd = x.LocationCd,
-               LocationName = x.LocationName,
-               IsDelete = x.IsDelete,
-               IsActive = x.IsActive,
-               CreatedBy = x.CreatedBy,
-               CreatedOn = x.CreatedOn,
-               ModifiedBy = x.ModifiedBy,
-               ModifiedOn = x.ModifiedOn,
-           }).ToList();
+            baseObj.Data = _locationCtx
+                .GetIQueryable()
+                .Select(x => new ELocationMaster
+                {
+                    LocationId = x.LocationId,
+                    LocationCd = x.LocationCd,
+                    LocationName = x.LocationName,
+                    IsDelete = x.IsDelete,
+                    IsActive = x.IsActive,
+                    CreatedBy = x.CreatedBy,
+                    CreatedOn = x.CreatedOn,
+                    ModifiedBy = x.ModifiedBy,
+                    ModifiedOn = x.ModifiedOn,
+                }).ToList();
 
             baseObj.ItemCount = baseObj.Data.Count;
             baseObj.Success = true;
@@ -53,4 +55,5 @@ public class Account
         }
         return baseObj;
     }
+
 }

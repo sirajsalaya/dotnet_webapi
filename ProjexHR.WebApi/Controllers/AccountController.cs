@@ -1,4 +1,7 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Options;
 using ProjexHR.Business;
 using ProjexHR.Contract;
 using ProjexHR.Shared;
@@ -9,9 +12,9 @@ namespace ProjexHR.WebApi;
 public class AccountController : BaseController
 {
     private readonly Account _account;
-    public AccountController() : base()
+    public AccountController(IMemoryCache cache, IMapper mapper, IOptions<Config> config) : base(cache, mapper, config)
     {
-        _account = new();
+        _account = new(_config);
     }
 
     [HttpGet("Login")]

@@ -12,5 +12,6 @@ public class Config
 public class CloudSQL
 {
     public string Database { get; set; }
+    public string SQLVersion { get; set; }
     public string ConnectionString { get; set; }
 }

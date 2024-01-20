@@ -9,7 +9,7 @@ public static class Logger
 {
     public static string UserName => "";
 
-    public static void InitialiseLogger()
+    public static ILogger InitialiseLogger()
     {
         var outputTemplate = "[{ThreadID} {Timestamp:HH:mm:ss}] [{Level}] [Username: {Username}] [Message: {Message}] [Method: {MemberName}] [FilePath: {FilePath}] [LineNumber: {LineNumber}] [SourceContext: {SourceContext}]{NewLine}";
 
@@ -23,6 +23,7 @@ public static class Logger
             .CreateLogger();
 
         Log.Logger.Here().Information("Initialized Logger");
+        return logger;
     }
 
     public static ILogger Here(
