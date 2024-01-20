@@ -24,7 +24,7 @@ These instructions will help you set up and run the HR Desk Application on your 
 
     ```bash
     dotnet build
-    dotnet run --project ProjexHR
+    dotnet run --project Dotnet
     ```
 
     The HR Desk Application will be accessible at `https://localhost:5001`.
@@ -33,11 +33,11 @@ These instructions will help you set up and run the HR Desk Application on your 
 
 The Projex HR Desk Application is organized into the following components:
 
-- `/ProjexHR`: Main HR Desk Application project.
-- `/ProjexHR.BusinessLogic`: Class library for HR business logic.
-- `/ProjexHR.DataAccess`: Class library for data access.
-- `/ProjexHR.Services`: Class library for HR services.
-- `/ProjexHR.Utilities`: Class library for utilities.
+- `/Dotnet`: Main HR Desk Application project.
+- `/Dotnet.BusinessLogic`: Class library for HR business logic.
+- `/Dotnet.DataAccess`: Class library for data access.
+- `/Dotnet.Services`: Class library for HR services.
+- `/Dotnet.Utilities`: Class library for utilities.
 - `/DTOs`: Data Transfer Objects.
 
 ## HR Desk API Endpoints

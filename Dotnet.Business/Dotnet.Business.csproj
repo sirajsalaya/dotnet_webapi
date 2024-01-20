@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dotnet.Core\Dotnet.Core.csproj" />
+    <ProjectReference Include="..\Dotnet.Shared\Dotnet.Shared.csproj" />
+    <ProjectReference Include="..\Dotnet.Contract\Dotnet.Contract.csproj" />
+    <ProjectReference Include="..\Dotnet.Data\Dotnet.Data.csproj" />
+  </ItemGroup>
+
+</Project>

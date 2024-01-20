@@ -1,6 +1,6 @@
-CREATE SCHEMA `projex_hr` ;
+CREATE SCHEMA `dotnet_webapi` ;
 
-CREATE TABLE `projex_hr`.`location_master` (
+CREATE TABLE `dotnet_webapi`.`location_master` (
   `location_id` INT NOT NULL AUTO_INCREMENT,
   `location_cd` VARCHAR(5) NOT NULL,
   `location_name` VARCHAR(45) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `projex_hr`.`location_master` (
   `modified_on` DATETIME NULL,
   PRIMARY KEY (`location_id`));
 
-CREATE TABLE `projex_hr`.`shift_master` (
+CREATE TABLE `dotnet_webapi`.`shift_master` (
   `shift_id` INT NOT NULL AUTO_INCREMENT,
   `shift_cd` VARCHAR(5) NOT NULL,
   `shift_name` VARCHAR(45) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE `projex_hr`.`shift_master` (
   `modified_on` DATETIME NULL,
   PRIMARY KEY (`shift_id`));
 
-CREATE TABLE `projex_hr`.`wage_master` (
+CREATE TABLE `dotnet_webapi`.`wage_master` (
   `wage_id` INT NOT NULL AUTO_INCREMENT,
   `wage_cd` VARCHAR(5) NOT NULL,
   `wage_name` VARCHAR(45) NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE `projex_hr`.`wage_master` (
   `modified_on` DATETIME NULL,
   PRIMARY KEY (`wage_id`));
 
-CREATE TABLE `projex_hr`.`designation_master` (
+CREATE TABLE `dotnet_webapi`.`designation_master` (
   `designation_id` INT NOT NULL AUTO_INCREMENT,
   `designation_cd` VARCHAR(5) NOT NULL,
   `designation_name` VARCHAR(45) NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE `projex_hr`.`designation_master` (
   `modified_on` DATETIME NULL,
   PRIMARY KEY (`designation_id`));
 
-CREATE TABLE `projex_hr`.`user_master` (
+CREATE TABLE `dotnet_webapi`.`user_master` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `user_name` VARCHAR(45) NOT NULL,
   `password` VARCHAR(100) NOT NULL,
