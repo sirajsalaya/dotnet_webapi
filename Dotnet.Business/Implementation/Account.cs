@@ -4,6 +4,10 @@ using Dotnet.Core;
 using Dotnet.Data;
 using Dotnet.Shared;
 using Serilog;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Dotnet.Business;
 
@@ -22,24 +26,9 @@ public class Account : Base
 
         try
         {
-            baseObj.Data = _locationCtx
-                .GetIQueryable()
-                .Select(x => new ELocationMaster
-                {
-                    LocationId = x.LocationId,
-                    LocationCd = x.LocationCd,
-                    LocationName = x.LocationName,
-                    IsDelete = x.IsDelete,
-                    IsActive = x.IsActive,
-                    CreatedBy = x.CreatedBy,
-                    CreatedOn = x.CreatedOn,
-                    ModifiedBy = x.ModifiedBy,
-                    ModifiedOn = x.ModifiedOn,
-                }).ToList();
-
-            baseObj.ItemCount = baseObj.Data.Count;
-            baseObj.Success = true;
-            baseObj.StatusCode = StatusCodes.Status200OK;
+            baseObj = GetSearchList<ELocationMaster>(
+                new ELocationMaster(),
+                x => !string.IsNullOrEmpty(x.LocationCd));
         }
         catch (Exception ex)
         {

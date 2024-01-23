@@ -1,3 +1,11 @@
+dotnet new sln -n Dotnet
+dotnet sln add .\Dotnet.WebApi\Dotnet.WebApi.csproj
+dotnet sln add .\Dotnet.Business\Dotnet.Business.csproj
+dotnet sln add .\Dotnet.Contract\Dotnet.Contract.csproj
+dotnet sln add .\Dotnet.Core\Dotnet.Core.csproj
+dotnet sln add .\Dotnet.Data\Dotnet.Data.csproj
+dotnet sln add .\Dotnet.Shared\Dotnet.Shared.csproj
+
 dotnet ef dbcontext scaffold `
     "User=root;Password=1234;Server=localhost;Port=3306;Database=dotnet_webapi;TreatTinyAsBoolean=false" ` 
     Pomelo.EntityFrameworkCore.MySql `

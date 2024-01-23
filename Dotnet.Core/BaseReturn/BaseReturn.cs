@@ -1,4 +1,4 @@
-namespace Dotnet.Shared;
+namespace Dotnet.Core;
 
 /// <summary>
 /// Represents a generic response object with success status, code, message, data, count, and error information.
